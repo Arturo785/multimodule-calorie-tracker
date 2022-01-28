@@ -9,13 +9,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import com.example.core.R
+import com.example.core.navigation.Route
+import com.example.core.util.UiEvent
 import com.example.core_ui.LocalSpacing
 import com.example.onboarding_presentation.components.ActionButton
 
 
 // the strings are located on the core module and we use that R
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(
+    onNavigate: (UiEvent.Navigate) -> Unit
+) {
     val spacing = LocalSpacing.current
 
     Column(
@@ -36,7 +40,8 @@ fun WelcomeScreen() {
 
         ActionButton(
             text = stringResource(id = R.string.next),
-            onClick = { /*TODO*/ },
+            // sets the ui event we defined in the main activity
+            onClick = { onNavigate(UiEvent.Navigate(Route.AGE)) },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }
