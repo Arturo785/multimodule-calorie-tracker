@@ -72,7 +72,9 @@ dependencies {
 
 
     /*this are the modules we made in the app and we tell gradle to include them*/
+    /*thanks to this we can access the things in the modules*/
     implementation(project(Modules.core))
+    implementation(project(Modules.coreUi))
     implementation(project(Modules.onboardingPresentation))
     implementation(project(Modules.onboardingDomain))
     implementation(project(Modules.trackerPresentation))
