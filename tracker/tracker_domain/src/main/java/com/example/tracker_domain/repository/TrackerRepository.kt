@@ -10,6 +10,8 @@ import java.time.LocalDate
 // access other layers
 interface TrackerRepository {
 
+    // general rule says that should be an use case per function on the repository
+
     suspend fun searchFood(
         query: String,
         page: Int,

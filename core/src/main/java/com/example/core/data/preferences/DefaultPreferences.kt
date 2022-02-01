@@ -1,4 +1,4 @@
-package com.example.core.domain
+package com.example.core.data.preferences
 
 import android.content.SharedPreferences
 import com.example.core.domain.model.ActivityLevel
@@ -88,5 +88,15 @@ class DefaultPreferences(
             proteinRatio = proteinRatio,
             fatRatio = fatRatio
         )
+    }
+
+    override fun saveShouldShowOnBoarding(save: Boolean) {
+        sharedPref.edit()
+            .putBoolean(Preferences.KEY_SHOULD_SHOW_ONBOARDING, save)
+            .apply()
+    }
+
+    override fun loadShouldShowOnBoarding(): Boolean {
+        return sharedPref.getBoolean(Preferences.KEY_SHOULD_SHOW_ONBOARDING, true)
     }
 }

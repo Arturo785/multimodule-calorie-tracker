@@ -12,6 +12,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.LocalDate
 
+
+//general rule says there should be an use case per method on the repository
 class TrackerRepositoryImpl(
     private val dao: TrackerDao,
     private val api: OpenFoodApi
