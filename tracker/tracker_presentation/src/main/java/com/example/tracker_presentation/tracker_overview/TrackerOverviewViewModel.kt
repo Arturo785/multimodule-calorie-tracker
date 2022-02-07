@@ -40,6 +40,7 @@ class TrackerOverviewViewModel @Inject constructor(
 
     // avoids passing through the onboarding
     init {
+        refreshFoods()
         preferences.saveShouldShowOnBoarding(false)
     }
 
