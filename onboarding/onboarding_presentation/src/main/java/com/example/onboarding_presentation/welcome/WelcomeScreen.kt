@@ -18,7 +18,7 @@ import com.example.onboarding_presentation.components.ActionButton
 // the strings are located on the core module and we use that R
 @Composable
 fun WelcomeScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit
+    onNextScreen: () -> Unit
 ) {
     val spacing = LocalSpacing.current
 
@@ -41,7 +41,7 @@ fun WelcomeScreen(
         ActionButton(
             text = stringResource(id = R.string.next),
             // sets the ui event we defined in the main activity
-            onClick = { onNavigate(UiEvent.Navigate(Route.GENDER)) },
+            onClick = { onNextScreen() },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }

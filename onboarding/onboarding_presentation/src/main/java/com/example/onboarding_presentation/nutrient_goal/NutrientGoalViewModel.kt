@@ -66,7 +66,7 @@ class NutrientGoalViewModel @Inject constructor(
                         preferences.saveFatRatio(result.fatRatio)
 
                         viewModelScope.launch {
-                            _uiEvent.send(UiEvent.Navigate(Route.TRACKER_OVERVIEW))
+                            _uiEvent.send(UiEvent.Navigate)
                         }
                     }
                     is ValidateNutrients.Result.Error -> {

@@ -41,7 +41,7 @@ class GenderViewModel @Inject constructor(
         viewModelScope.launch {
             preferences.saveGender(selectedGender)
             // sets the event but does not navigate
-            _uiEvent.send(UiEvent.Navigate(Route.AGE))
+            _uiEvent.send(UiEvent.Navigate)
         }
     }
 }

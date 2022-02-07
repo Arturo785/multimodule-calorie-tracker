@@ -54,7 +54,7 @@ class AgeViewModel @Inject constructor(
 
             // happy path
             preferences.saveAge(ageNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.HEIGHT))
+            _uiEvent.send(UiEvent.Navigate)
         }
     }
 }

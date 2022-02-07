@@ -14,11 +14,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import coil.annotation.ExperimentalCoilApi
-import com.example.calorietracker.navigation.navigate
 import com.example.calorietracker.ui.theme.CalorieTrackerTheme
 import com.example.core.domain.preferences.Preferences
 import com.example.core.navigation.Route
-import com.example.core.util.UiEvent
 import com.example.onboarding_presentation.activilty.ActivityScreen
 import com.example.onboarding_presentation.age.AgeScreen
 import com.example.onboarding_presentation.gender.GenderScreen
@@ -65,36 +63,38 @@ class MainActivity : ComponentActivity() {
 
                         composable(Route.WELCOME) {
                             // we define the event on the composable
-                            WelcomeScreen(onNavigate = {
-                                navController.navigate(it)
+                            WelcomeScreen(onNextScreen = {
+                                navController.navigate(Route.GENDER)
                             })
                         }
 
                         composable(Route.AGE) {
                             AgeScreen(
                                 onNavigate = {
-                                    navController.navigate(it)
+                                    navController.navigate(Route.HEIGHT)
                                 }, scaffoldState = scaffoldState
                             )
                         }
 
                         composable(Route.GENDER) {
                             GenderScreen(onNavigate = {
-                                navController.navigate(it)
+                                navController.navigate(Route.AGE)
                             })
                         }
 
                         composable(Route.HEIGHT) {
                             HeightScreen(
                                 scaffoldState = scaffoldState,
-                                onNavigate = navController::navigate
+                                onNavigate = {
+                                    navController.navigate(Route.WEIGHT)
+                                }
                             )
                         }
 
                         composable(Route.WEIGHT) {
                             WeightScreen(
                                 onNavigate = {
-                                    navController.navigate(it)
+                                    navController.navigate(Route.ACTIVITY)
                                 }, scaffoldState = scaffoldState
                             )
                         }
@@ -102,27 +102,34 @@ class MainActivity : ComponentActivity() {
                         composable(Route.NUTRIENT_GOAL) {
                             NutrientGoalScreen(
                                 onNavigate = {
-                                    navController.navigate(it)
+                                    navController.navigate(Route.TRACKER_OVERVIEW)
                                 }, scaffoldState = scaffoldState
                             )
                         }
 
                         composable(Route.ACTIVITY) {
                             ActivityScreen(onNavigate = {
-                                navController.navigate(it)
+                                navController.navigate(Route.GOAL)
                             })
                         }
 
                         composable(Route.GOAL) {
                             GoalScreen(onNavigate = {
-                                navController.navigate(it)
+                                navController.navigate(Route.NUTRIENT_GOAL)
                             })
                         }
 
                         composable(Route.TRACKER_OVERVIEW) {
-                            TrackerOverviewScreen(onNavigate = {
-                                navController.navigate(it)
-                            })
+                            TrackerOverviewScreen(
+                                onNavigate = { mealName, day, month, year ->
+                                    navController.navigate(
+                                        Route.SEARCH + "/$mealName" +
+                                                "/$day" +
+                                                "/$month" +
+                                                "/$year"
+                                    )
+                                }
+                            )
                         }
 
                         composable(

@@ -47,7 +47,7 @@ class WeightViewModel @Inject constructor(
             }
 
             preferences.saveWeight(weightNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.ACTIVITY))
+            _uiEvent.send(UiEvent.Navigate)
         }
     }
 }
