@@ -63,8 +63,11 @@ fun TrackerOverviewScreen(
                             .fillMaxWidth()
                             .padding(horizontal = spacing.spaceSmall)
                     ) {
+                        val foods = state.trackedFoods.filter {
+                            it.mealType == meal.mealType
+                        }
                         // show every food in the meal list
-                        state.trackedFoods.forEach { food ->
+                        foods.forEach { food ->
                             TrackedFoodItem(
                                 trackedFood = food,
                                 // triggers the event of elimination
